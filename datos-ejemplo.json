@@ -1,0 +1,433 @@
+{
+  "actualizado": "2026-10-27T14:30:00.000Z",
+  "hoja": "Revision 47",
+  "organizaciones": 129,
+  "participantes": 141,
+  "siNo": {
+    "claridad": {
+      "si": 98,
+      "no": 43
+    },
+    "indicadores": {
+      "si": 84,
+      "no": 57
+    },
+    "estrategia": {
+      "si": 52,
+      "no": 89
+    }
+  },
+  "temas": [
+    {
+      "label": "Evaluación de impacto",
+      "n": 92
+    },
+    {
+      "label": "Diseño de indicadores (producto, resultado e impacto)",
+      "n": 88
+    },
+    {
+      "label": "Metodologías de diseño de proyectos (Teoría del Cambio y Marco Lógico)",
+      "n": 74
+    },
+    {
+      "label": "Herramientas de visualización cuantitativa y storytelling",
+      "n": 61
+    },
+    {
+      "label": "Evaluación de resultados",
+      "n": 57
+    },
+    {
+      "label": "Herramientas de análisis y recolección de información",
+      "n": 49
+    },
+    {
+      "label": "Plataformas tecnológicas de Monitoreo y Evaluación",
+      "n": 38
+    },
+    {
+      "label": "Diseño de instrumentos de recolección de información",
+      "n": 33
+    }
+  ],
+  "niveles": [
+    "No conozco",
+    "Básico",
+    "Intermedio",
+    "Avanzado"
+  ],
+  "conocimiento": {
+    "metodologias": [
+      {
+        "item": "Análisis Costo Beneficio",
+        "n": [
+          63,
+          61,
+          13,
+          4
+        ]
+      },
+      {
+        "item": "Enfoque de Marco Lógico",
+        "n": [
+          44,
+          52,
+          30,
+          15
+        ]
+      },
+      {
+        "item": "Evaluación de Impacto - Cuasi-experimental",
+        "n": [
+          81,
+          40,
+          13,
+          7
+        ]
+      },
+      {
+        "item": "Evaluación de Impacto - Enfoque experimental",
+        "n": [
+          91,
+          35,
+          7,
+          8
+        ]
+      },
+      {
+        "item": "Evaluación de Procesos",
+        "n": [
+          67,
+          37,
+          28,
+          9
+        ]
+      },
+      {
+        "item": "Evaluación de Resultados con criterios OCDE-DAC (Relevancia, Efectividad, Eficiencia, Sostenibilidad)",
+        "n": [
+          74,
+          50,
+          10,
+          7
+        ]
+      },
+      {
+        "item": "Métodos mixtos de evaluación de resultados",
+        "n": [
+          65,
+          47,
+          21,
+          8
+        ]
+      },
+      {
+        "item": "Retorno Social de la Inversión (SROI)",
+        "n": [
+          87,
+          46,
+          5,
+          3
+        ]
+      },
+      {
+        "item": "Teoría de Cambio",
+        "n": [
+          56,
+          51,
+          26,
+          8
+        ]
+      }
+    ],
+    "tecnicas": [
+      {
+        "item": "Análisis cualitativo",
+        "n": [
+          44,
+          46,
+          40,
+          11
+        ]
+      },
+      {
+        "item": "Análisis cuantitativo-descriptivo",
+        "n": [
+          48,
+          64,
+          22,
+          7
+        ]
+      },
+      {
+        "item": "Análisis cuantitativo-econométrico",
+        "n": [
+          86,
+          44,
+          9,
+          2
+        ]
+      },
+      {
+        "item": "Diseño de cuestionarios estructurados",
+        "n": [
+          69,
+          39,
+          25,
+          8
+        ]
+      },
+      {
+        "item": "Diseño de indicadores cualitativos",
+        "n": [
+          60,
+          55,
+          22,
+          4
+        ]
+      },
+      {
+        "item": "Diseño de indicadores cuantitativos",
+        "n": [
+          52,
+          50,
+          29,
+          10
+        ]
+      },
+      {
+        "item": "Entrevista en profundidad",
+        "n": [
+          47,
+          54,
+          33,
+          7
+        ]
+      },
+      {
+        "item": "Estudios de caso",
+        "n": [
+          60,
+          42,
+          29,
+          10
+        ]
+      },
+      {
+        "item": "Grupos focales / talleres participativos",
+        "n": [
+          48,
+          51,
+          29,
+          13
+        ]
+      },
+      {
+        "item": "Limpieza y manejo de bases de datos",
+        "n": [
+          68,
+          42,
+          26,
+          5
+        ]
+      },
+      {
+        "item": "Triangulación de Información",
+        "n": [
+          72,
+          45,
+          17,
+          7
+        ]
+      }
+    ],
+    "herramientas": [
+      {
+        "item": "Asistentes de IA aplicados a MEL (Gemini Gems, GPTs personalizados, NotebookLM)",
+        "n": [
+          72,
+          51,
+          8,
+          10
+        ]
+      },
+      {
+        "item": "Automatización con IA (Zapier, Make, bots con IA)",
+        "n": [
+          83,
+          50,
+          6,
+          2
+        ]
+      },
+      {
+        "item": "Captura de información cuanti (Kobo, Formassembly, Gforms, etc)",
+        "n": [
+          69,
+          41,
+          27,
+          4
+        ]
+      },
+      {
+        "item": "Data science (Python, R, etc)",
+        "n": [
+          83,
+          45,
+          2,
+          11
+        ]
+      },
+      {
+        "item": "Inteligencia Artificial Generativa (ChatGPT, Claude, Gemini, etc.)",
+        "n": [
+          40,
+          52,
+          35,
+          14
+        ]
+      },
+      {
+        "item": "Microsoft Excel",
+        "n": [
+          25,
+          61,
+          43,
+          12
+        ]
+      },
+      {
+        "item": "Plataformas de Monitoreo y Evaluación (SoPact, TolaData, etc)",
+        "n": [
+          89,
+          36,
+          13,
+          3
+        ]
+      },
+      {
+        "item": "Procesamiento y análisis cualitativo (Atlas.Ti, otros)",
+        "n": [
+          80,
+          42,
+          16,
+          3
+        ]
+      },
+      {
+        "item": "Procesamiento y análisis estadístico (Stata, R, SPSS, etc)",
+        "n": [
+          81,
+          37,
+          12,
+          11
+        ]
+      },
+      {
+        "item": "Sistemas de gestión/CRM (Salesforce, Dynamics, etc)",
+        "n": [
+          66,
+          51,
+          9,
+          15
+        ]
+      },
+      {
+        "item": "Storytelling (Sway, Atavist, Medium, etc)",
+        "n": [
+          75,
+          51,
+          4,
+          11
+        ]
+      },
+      {
+        "item": "Visualización de información (Tableau, Power Bi, etc)",
+        "n": [
+          49,
+          58,
+          23,
+          11
+        ]
+      }
+    ]
+  },
+  "ia": {
+    "integracion": [
+      {
+        "label": "Sin adopción formal",
+        "n": 31
+      },
+      {
+        "label": "Uso puntual",
+        "n": 58
+      },
+      {
+        "label": "Exploratorio",
+        "n": 27
+      },
+      {
+        "label": "Integración en flujos de trabajo",
+        "n": 19
+      },
+      {
+        "label": "Soluciones propias",
+        "n": 4
+      },
+      {
+        "label": "Avanzadas",
+        "n": 2
+      }
+    ],
+    "directrices": [
+      {
+        "label": "No",
+        "n": 62
+      },
+      {
+        "label": "Prohibido",
+        "n": 3
+      },
+      {
+        "label": "No, pero está permitido",
+        "n": 41
+      },
+      {
+        "label": "En proceso",
+        "n": 26
+      },
+      {
+        "label": "Sí, completamente",
+        "n": 9
+      }
+    ],
+    "areas": [
+      {
+        "label": "Redacción y comunicación institucional",
+        "n": 96
+      },
+      {
+        "label": "Gestión de proyectos y tareas administrativas",
+        "n": 54
+      },
+      {
+        "label": "Procesamiento y análisis de datos cualitativos",
+        "n": 38
+      },
+      {
+        "label": "No se utiliza actualmente a nivel organizacional",
+        "n": 27
+      },
+      {
+        "label": "Análisis de datos cuantitativos o generación de código",
+        "n": 22
+      },
+      {
+        "label": "Atención a usuarios o beneficiarios",
+        "n": 11
+      }
+    ]
+  },
+  "faltantes": []
+}

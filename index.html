@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curso Inmersión MEL — Línea de Base</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f5f4;
+    --card: #ffffff;
+    --line: #e3e8e5;
+    --text: #1f2a24;
+    --muted: #5d6b63;
+    --title: #3a4540;
+    --green: #3dbf7f;
+    --green-dark: #1f8a57;
+    --mint: #d4f5e3;
+    --mint-soft: #eefaf3;
+    --kpi-bg: #e2f7ec;
+    --lvl-0: #d4f5e3;
+    --lvl-1: #8fdcb3;
+    --lvl-2: #3dbf7f;
+    --lvl-3: #1d7a4c;
+    --warn-bg: #fff7e0;
+    --warn-line: #f0c75e;
+    --err-bg: #fdecec;
+    --err-line: #e08b8b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Encabezado */
+  header { background: var(--card); border-bottom: 1px solid var(--line); }
+  .top {
+    max-width: 1400px; margin: 0 auto; padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 4px; font-weight: 700; font-size: 26px; letter-spacing: -0.5px; }
+  .logo .pill {
+    background: var(--green); color: #fff; font-size: 14px; font-weight: 600;
+    padding: 1px 9px 2px; border-radius: 6px; letter-spacing: 0.3px; margin-top: 4px;
+  }
+  .sep { width: 1px; height: 28px; background: var(--line); }
+  .titulo { font-size: 18px; font-weight: 300; }
+  .titulo b { font-weight: 600; }
+  .kpis { display: flex; gap: 12px; }
+  .kpi {
+    background: var(--kpi-bg); border: 1.5px solid var(--green); border-radius: 8px;
+    min-width: 130px; padding: 6px 16px 8px; text-align: center;
+  }
+  .kpi .num { font-size: 30px; font-weight: 600; color: var(--green-dark); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .kpi .lbl { font-size: 11px; letter-spacing: 0.6px; color: var(--green-dark); text-transform: uppercase; }
+
+  nav { border-top: 1px solid var(--line); }
+  .tabs {
+    max-width: 1400px; margin: 0 auto; padding: 0 40px;
+    display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    appearance: none; background: none; border: 0; cursor: pointer; white-space: nowrap;
+    font: inherit; font-size: 16px; color: var(--title);
+    padding: 14px 28px 13px; border-bottom: 3px solid transparent;
+  }
+  .tab:hover { color: var(--green-dark); }
+  .tab[aria-selected="true"] {
+    background: var(--mint-soft); color: var(--green-dark); font-weight: 500;
+    border-bottom-color: var(--green);
+  }
+  .tab:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+
+  /* Contenido */
+  main { max-width: 1400px; margin: 0 auto; padding: 32px 40px 24px; }
+  .intro {
+    border-left: 3px solid var(--green); padding: 2px 0 2px 16px; margin: 0 0 28px;
+    color: var(--title); font-size: 15px;
+  }
+  .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }
+  .grid + .grid, .grid + .card, .card + .card { margin-top: 24px; }
+  .grid > .card { margin-top: 0; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 26px 30px 28px;
+  }
+  .card h2 {
+    margin: 0 0 4px; font-size: 14px; font-weight: 500; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--title);
+  }
+  .card .sub {
+    margin: 0; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #8a958f;
+  }
+  .card .body { margin-top: 22px; }
+
+  /* Barras horizontales */
+  .hbars { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr) auto; gap: 12px 14px; align-items: center; }
+  .hbars .lbl { text-align: right; font-size: 14px; color: var(--text); }
+  .track { background: var(--mint); border-radius: 4px; height: 34px; overflow: hidden; }
+  .fill {
+    background: var(--green); height: 100%; border-radius: 4px;
+    display: flex; align-items: center; justify-content: flex-end; padding: 0 9px;
+    color: #fff; font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums;
+    transition: width .5s ease;
+  }
+  .fill.zero { padding: 0; }
+  .hbars .extra { font-size: 13px; color: var(--muted); min-width: 3.2em; text-align: right; font-variant-numeric: tabular-nums; }
+  .hbars.no-extra { grid-template-columns: minmax(0, max-content) minmax(0, 1fr); }
+  .hbars.wide-lbl { grid-template-columns: minmax(0, 38%) minmax(0, 1fr) auto; }
+  .hbars.wide-lbl.no-extra { grid-template-columns: minmax(0, 38%) minmax(0, 1fr); }
+
+  /* Barras 100% apiladas */
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; font-size: 13px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .legend i { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+  .stack-rows { display: grid; grid-template-columns: minmax(0, 36%) minmax(0, 1fr); gap: 12px 18px; align-items: center; }
+  .stack-rows .lbl { text-align: right; font-size: 14px; }
+  .stack { display: flex; height: 34px; border-radius: 4px; overflow: hidden; background: #f0f2f1; }
+  .seg {
+    display: flex; align-items: center; justify-content: center; overflow: hidden; white-space: nowrap;
+    font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  .seg + .seg { box-shadow: inset 1px 0 0 rgba(255,255,255,.7); }
+  .l0 { background: var(--lvl-0); color: #1d5a3c; }
+  .l1 { background: var(--lvl-1); color: #154a31; }
+  .l2 { background: var(--lvl-2); color: #fff; }
+  .l3 { background: var(--lvl-3); color: #fff; }
+
+  /* Estados */
+  .estado { text-align: center; padding: 70px 20px; color: var(--muted); font-size: 16px; }
+  .spinner {
+    width: 34px; height: 34px; margin: 0 auto 16px; border-radius: 50%;
+    border: 3px solid var(--mint); border-top-color: var(--green); animation: girar .9s linear infinite;
+  }
+  @keyframes girar { to { transform: rotate(360deg); } }
+  .aviso {
+    background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 10px;
+    padding: 10px 16px; margin: 0 0 24px; font-size: 14px;
+  }
+  .error {
+    background: var(--err-bg); border: 1px solid var(--err-line); border-radius: 12px;
+    padding: 22px 24px; max-width: 640px; margin: 40px auto; font-size: 15px;
+  }
+  .error h2 { margin: 0 0 8px; font-size: 17px; }
+  .error code { font-size: 13px; word-break: break-word; }
+  .btn {
+    margin-top: 14px; appearance: none; border: 0; border-radius: 8px; cursor: pointer;
+    background: var(--green); color: #fff; font: inherit; font-weight: 500; padding: 8px 18px;
+  }
+  footer { max-width: 1400px; margin: 0 auto; padding: 8px 40px 36px; font-size: 13px; color: var(--muted); }
+
+  /* Celular */
+  @media (max-width: 720px) {
+    .top { padding: 14px 16px; }
+    .sep { display: none; }
+    .brand { gap: 6px 14px; }
+    .titulo { font-size: 15px; width: 100%; }
+    .kpis { width: 100%; }
+    .kpi { flex: 1; min-width: 0; }
+    .kpi .num { font-size: 26px; }
+    .tabs { padding: 0 8px; }
+    .tab { padding: 12px 16px 11px; font-size: 15px; }
+    main { padding: 22px 16px 16px; }
+    footer { padding: 8px 16px 28px; }
+    .card { padding: 20px 16px 22px; border-radius: 14px; }
+    .grid { gap: 16px; }
+    .grid + .grid, .grid + .card, .card + .card { margin-top: 16px; }
+    .hbars, .hbars.wide-lbl { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; }
+    .hbars.no-extra, .hbars.wide-lbl.no-extra { grid-template-columns: minmax(0, 1fr); }
+    .hbars .lbl { grid-column: 1 / -1; text-align: left; margin-top: 8px; font-size: 13px; }
+    .stack-rows { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .stack-rows .lbl { text-align: left; margin-top: 10px; font-size: 13px; }
+    .track, .stack { height: 30px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand">
+      <div class="logo">ZIGLab<span class="pill">class</span></div>
+      <div class="sep"></div>
+      <div class="titulo"><b>Curso Inmersión MEL</b> — Línea de Base</div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="num" id="kpi-org">–</div><div class="lbl">Organizaciones</div></div>
+      <div class="kpi"><div class="num" id="kpi-part">–</div><div class="lbl">Participantes</div></div>
+    </div>
+  </div>
+  <nav><div class="tabs" role="tablist" id="tabs"></div></nav>
+</header>
+
+<main id="contenido">
+  <div class="estado"><div class="spinner"></div>Cargando…</div>
+</main>
+<footer id="pie"></footer>
+
+<script>
+// Pegá acá la URL de la Web App de Apps Script (termina en /exec).
+const APPS_SCRIPT_URL = "PEGAR_URL_AQUI";
+
+const DATOS_EJEMPLO_URL = "datos-ejemplo.json";
+const usaEjemplo = !/^https?:\/\//.test(APPS_SCRIPT_URL.trim());
+
+const SECCIONES = [
+  { id: "organizacion", nombre: "Organización",
+    intro: "Autopercepción de las organizaciones inscritas sobre sus capacidades de MEL y temas de mayor interés para el curso." },
+  { id: "metodologias", nombre: "Metodologías",
+    intro: "Nivel de conocimiento que declaran los participantes sobre metodologías de diseño y evaluación de proyectos." },
+  { id: "tecnicas", nombre: "Técnicas",
+    intro: "Nivel de conocimiento que declaran los participantes sobre técnicas de recolección y análisis de información." },
+  { id: "herramientas", nombre: "Herramientas",
+    intro: "Nivel de conocimiento que declaran los participantes sobre herramientas y plataformas digitales aplicadas a MEL." },
+  { id: "ia", nombre: "IA",
+    intro: "Grado de adopción de la Inteligencia Artificial en las organizaciones, sus políticas de uso y las áreas donde se aplica." }
+];
+
+let datos = null;
+let seccionActiva = SECCIONES.some(s => "#" + s.id === location.hash) ? location.hash.slice(1) : "organizacion";
+
+const $ = sel => document.querySelector(sel);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = n => n.toLocaleString("es-AR");
+const pct = (n, total) => total ? (n / total) * 100 : 0;
+const pctTxt = p => Math.round(p) + "%";
+
+function dibujarPestanas() {
+  $("#tabs").innerHTML = SECCIONES.map(s =>
+    `<button class="tab" role="tab" data-id="${s.id}" aria-selected="${s.id === seccionActiva}">${s.nombre}</button>`
+  ).join("");
+  const activa = $(".tab[aria-selected='true']");
+  $("#tabs").scrollLeft = activa.offsetLeft - ($("#tabs").clientWidth - activa.offsetWidth) / 2;
+  $("#tabs").onclick = e => {
+    const b = e.target.closest(".tab");
+    if (!b) return;
+    seccionActiva = b.dataset.id;
+    history.replaceState(null, "", "#" + seccionActiva);
+    dibujarPestanas();
+    if (datos) dibujarSeccion();
+  };
+}
+
+// Barras horizontales. filas: [{label, n}]. modo "conteo" (número adentro, % al costado) o "pct" (% adentro).
+function barras(filas, { total, max, modo = "conteo", anchoEtiqueta = false } = {}) {
+  const tope = max || Math.max(1, ...filas.map(f => f.n));
+  const extra = modo === "conteo" && total;
+  const clases = ["hbars", anchoEtiqueta ? "wide-lbl" : "", extra ? "" : "no-extra"].join(" ");
+  return `<div class="${clases}">` + filas.map(f => {
+    const p = pct(f.n, total);
+    const ancho = modo === "pct" ? p : (f.n / tope) * 100;
+    const texto = modo === "pct" ? pctTxt(p) : fmt(f.n);
+    const minimo = f.n > 0 ? `min-width:${texto.length * 0.62 + 1.4}em;` : "";
+    return `<div class="lbl">${esc(f.label)}</div>
+      <div class="track" title="${esc(f.label)}: ${fmt(f.n)} (${pctTxt(p)})">
+        <div class="fill${f.n ? "" : " zero"}" style="width:${ancho}%;${minimo}">${f.n ? texto : ""}</div>
+      </div>` + (extra ? `<div class="extra">${pctTxt(p)}</div>` : "");
+  }).join("") + "</div>";
+}
+
+function tarjeta(titulo, cuerpo, sub = "") {
+  return `<section class="card"><h2>${esc(titulo)}</h2>${sub ? `<p class="sub">${esc(sub)}</p>` : ""}<div class="body">${cuerpo}</div></section>`;
+}
+
+function niveles(items, nombres) {
+  const total = datos.participantes;
+  const leyenda = `<div class="legend">` + nombres.map((n, i) => `<span><i class="l${i}"></i>${esc(n)}</span>`).join("") + `</div>`;
+  if (!items.length) return `<p>Sin datos.</p>`;
+  const filas = items.map(it => {
+    const segs = it.n.map((n, i) => {
+      const p = pct(n, total);
+      if (!n) return "";
+      return `<div class="seg l${i}" style="width:${p}%" title="${esc(nombres[i])}: ${fmt(n)} (${pctTxt(p)})">${p >= 6 ? pctTxt(p) : ""}</div>`;
+    }).join("");
+    return `<div class="lbl">${esc(it.item)}</div><div class="stack">${segs}</div>`;
+  }).join("");
+  return `<div class="stack-rows">${filas}</div>` + leyenda;
+}
+
+function siNo(titulo, v) {
+  const total = datos.participantes;
+  return tarjeta(titulo, barras([{ label: "Sí", n: v.si }, { label: "No", n: v.no }], { total, max: total }));
+}
+
+function dibujarSeccion() {
+  const d = datos;
+  const s = SECCIONES.find(x => x.id === seccionActiva);
+  let html = "";
+  if (usaEjemplo) {
+    html += `<div class="aviso"><b>Datos de ejemplo.</b> Estos números son inventados para probar el diseño. Para ver los datos reales, pegá la URL de la Web App en <code>APPS_SCRIPT_URL</code> dentro de <code>index.html</code>.</div>`;
+  }
+  if (d.faltantes && d.faltantes.length) {
+    html += `<div class="aviso"><b>Atención:</b> no se encontraron estas columnas en la planilla: ${d.faltantes.map(esc).join(" · ")}</div>`;
+  }
+  html += `<p class="intro">${s.intro}</p>`;
+
+  if (s.id === "organizacion") {
+    html += `<div class="grid">` +
+      siNo("¿Tu organización tiene claridad respecto de lo que quiere medir?", d.siNo.claridad) +
+      siNo("¿Tu organización cuenta con indicadores para monitorear sus resultados?", d.siNo.indicadores) +
+      siNo("¿Tu organización cuenta con una estrategia de Monitoreo y Evaluación?", d.siNo.estrategia) +
+      `</div>`;
+    const top5 = [...d.temas].sort((a, b) => b.n - a.n).slice(0, 5);
+    html += tarjeta("¿Cuáles temas consideras de mayor interés?",
+      barras(top5, { total: d.participantes, anchoEtiqueta: true }), "Top 5 — selección múltiple");
+  } else if (s.id === "ia") {
+    const t = d.participantes;
+    html += `<div class="grid">` +
+      tarjeta("Integración de IA en procesos formales de trabajo", barras(d.ia.integracion, { total: t, modo: "pct" }),
+        "¿En qué medida tu organización ha integrado herramientas de IA?") +
+      tarjeta("Directrices y políticas para el uso seguro de IA", barras(d.ia.directrices, { total: t, modo: "pct" }),
+        "¿Cuenta tu organización con directrices, políticas o infraestructura?") +
+      `</div>`;
+    const areas = [...d.ia.areas].sort((a, b) => b.n - a.n);
+    html += tarjeta("¿En qué áreas o procesos se utiliza actualmente la IA?",
+      barras(areas, { total: t, modo: "pct", max: t, anchoEtiqueta: true }), "Selección múltiple — % de participantes");
+  } else {
+    html += tarjeta("Nivel de conocimiento", niveles(d.conocimiento[s.id] || [], d.niveles || ["No conozco", "Básico", "Intermedio", "Avanzado"]),
+      "% de participantes");
+  }
+  $("#contenido").innerHTML = html;
+}
+
+function mostrarError(msg) {
+  $("#contenido").innerHTML = `<div class="error">
+    <h2>No se pudieron cargar los datos</h2>
+    <p>Puede ser un problema momentáneo de conexión o de la Web App de Apps Script. Probá de nuevo en unos minutos.</p>
+    <p>Detalle técnico: <code>${esc(msg)}</code></p>
+    <button class="btn" onclick="cargar()">Reintentar</button>
+  </div>`;
+}
+
+async function cargar() {
+  $("#contenido").innerHTML = `<div class="estado"><div class="spinner"></div>Cargando…</div>`;
+  try {
+    const url = usaEjemplo ? DATOS_EJEMPLO_URL : APPS_SCRIPT_URL.trim();
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error("La respuesta del servidor fue " + r.status);
+    const d = await r.json();
+    if (d.error) throw new Error(d.error);
+    datos = d;
+    $("#kpi-org").textContent = fmt(d.organizaciones);
+    $("#kpi-part").textContent = fmt(d.participantes);
+    const f = new Date(d.actualizado);
+    $("#pie").innerHTML = `Última actualización: ${esc(f.toLocaleString("es-AR", { dateStyle: "long", timeStyle: "short" }))}` +
+      (usaEjemplo ? " · datos de ejemplo" : "") + ` · Solo se muestran datos agregados, sin información personal.`;
+    dibujarSeccion();
+  } catch (err) {
+    mostrarError(err.message || String(err));
+  }
+}
+
+window.addEventListener("hashchange", () => {
+  const id = location.hash.slice(1);
+  if (id === seccionActiva || !SECCIONES.some(s => s.id === id)) return;
+  seccionActiva = id;
+  dibujarPestanas();
+  if (datos) dibujarSeccion();
+});
+
+dibujarPestanas();
+cargar();
+</script>
+</body>
+</html>
